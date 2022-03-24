@@ -6,11 +6,7 @@ namespace ETSFecha
     {
         static void Main(string[] args)
         {
-            var fecha1 = new DateTime(2003, 01, 01);
-            var fecha2 = DateTime.Today;
-            DateTime[] listaFechas = { fecha1, fecha2 };
-
-            DiferenciasAños.datos[] allfechas = new DiferenciasAños.datos[2];
+            DiferenciasAnnos.datos[] allfechas = new DiferenciasAnnos.datos[2];
 
             allfechas[0].anno = 2000;
             allfechas[0].mes = 12;
@@ -22,7 +18,12 @@ namespace ETSFecha
             allfechas[1].dia = 20;
             allfechas[1].ACDC = 1;
 
-            DiferenciasAños.DifferenceYear(allfechas);
+            Console.WriteLine("buenos días");
+
+            string[] resultado = DiferenciasAnnos.DifferenceYear(allfechas);
+
+            Console.WriteLine("La diferencia en años es de: " + resultado[0] + " y en dias: " + resultado[1]);
+            Console.ReadKey();
         }
     }
 }

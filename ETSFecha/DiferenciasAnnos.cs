@@ -2,7 +2,7 @@
 
 namespace ETSFecha
 {
-    class DiferenciasAños
+    public class DiferenciasAnnos
     {
         /// <summary>
         /// Estructura en donde guardar los datos de los años, meses, dias y si es antes de cristo.
@@ -17,7 +17,14 @@ namespace ETSFecha
             public int ACDC;
         }
 
-        public static int ContadorAñosAC(datos[] allFechas)
+        /// <summary>
+        /// Devuelve el numero de fechas antes de cristo que se envíen a través de la estructura(parámetro)
+        /// </summary>
+        /// <param name="allFechas">
+        /// Todos los datos de las fechas pedidas
+        /// </param>
+        /// <returns></returns>
+        private static int ContadorAñosAC(datos[] allFechas)
         {
             int contador = 0;
             for (int posicion = 0; posicion < allFechas.Length; posicion++)
@@ -36,46 +43,44 @@ namespace ETSFecha
         /// <param name="listaFechas">
         /// El parámetro contiene las dos fechas con las que se va a trabajar.
         /// </param>
-        public static void DifferenceYear(datos[] alldata)
+        public static string[] DifferenceYear(datos[] alldata)
         {
 
             int numACDC = ContadorAñosAC(alldata);
 
+            string[] resultados = new string[2];
+            int años = 0;
+            int dias = 0;
+
             if (numACDC == 1)
             {
+                DateTime fecha1 = new DateTime(1, alldata[0].mes, alldata[0].dia);
+                DateTime fecha2 = new DateTime(alldata[0].anno + alldata[1].anno + 1, alldata[1].mes, alldata[1].dia);
 
-            }
+                DifAñosDias(ref dias, ref años, fecha2, fecha1);
 
-            /*
-            int difAños = 0;
-            int difDias = 0;
-            string fraseFinal;
-            if (listaFechas.Length == 2)
-            {
-                if (listaFechas[0] > listaFechas[1])
-                {
-                    DifAñosDias(ref difDias, ref difAños, listaFechas[0], listaFechas[1]);
-                    fraseFinal = "La diferencia en años es de: " + difAños + " y en dias es de: " + difDias + " dias.";
-                }
-                else
-                {
-                    if (listaFechas[0] < listaFechas[1])
-                    {
-                        DifAñosDias(ref difDias, ref difAños, listaFechas[1], listaFechas[0]);
-                        fraseFinal = "La diferencia en años es de: " + difAños + " y en dias es de: " + difDias + " dias.";
-                    }
-                    else
-                    {
-                        fraseFinal = "No existe diferencia de años ni de días debido a que son fechas iguales.";
-                    }
-                }
-                Console.WriteLine(fraseFinal);
+                resultados[0] = años.ToString();
+                resultados[1] = dias.ToString();
             }
             else
             {
-                Console.WriteLine("Deben de haber dos fechas. No pueden haber ni más ni menos.");
+                DateTime fecha1 = new DateTime(alldata[0].anno, alldata[0].mes, alldata[0].dia);
+                DateTime fecha2 = new DateTime(alldata[1].anno, alldata[1].mes, alldata[1].dia);
+
+                if (fecha1 > fecha2)
+                {
+                    DifAñosDias(ref dias, ref años, fecha1, fecha2);
+                }
+                else
+                {
+                    if (fecha1 < fecha2)
+                    {
+                        DifAñosDias(ref dias, ref años, fecha2, fecha1);
+                    }
+                }
             }
-            */
+
+            return resultados;
         }
 
         /// <summary>
@@ -100,28 +105,3 @@ namespace ETSFecha
         }
     }
 }
-
-/*
-
-static void Main(string[] args)
-        {
-            var fecha1 = new DateTime(2003, 01, 01);
-            var fecha2 = DateTime.Today;
-            DateTime[] listaFechas = { fecha1, fecha2 };
-
-            DiferenciasAños.datos[] allfechas = new DiferenciasAños.datos[2];
-
-            allfechas[0].anno = 2000;
-            allfechas[0].mes = 12;
-            allfechas[0].dia = 30;
-            allfechas[0].ACDC = 0;
-
-            allfechas[1].anno = 1920;
-            allfechas[1].mes = 6;
-            allfechas[1].dia = 20;
-            allfechas[1].ACDC = 1;
-
-            DiferenciasAños.DifferenceYear(allfechas); 
-
-*/
-
