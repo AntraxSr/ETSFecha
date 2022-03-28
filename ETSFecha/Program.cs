@@ -2,21 +2,24 @@
 
 namespace ETSFecha
 {
-    class Program
+    public class Program
     {
+        /// <summary>
+        /// Estructura en donde guardar los datos de los años, meses, dias y si es antes de cristo.
+        /// Si es antes de cristo(AC) = 0
+        /// Si es después de cristo(DC) = 1
+        /// </summary>
+        public struct Fecha
+        {
+            public int Anno;
+            public int Mes;
+            public int Dia;
+            public int ACDC;
+        }
+
         static void Main(string[] args)
         {
-            DiferenciasAnnos.datos[] allfechas = new DiferenciasAnnos.datos[2];
-
-            allfechas[0].anno = 2000;
-            allfechas[0].mes = 12;
-            allfechas[0].dia = 30;
-            allfechas[0].ACDC = 0;
-
-            allfechas[1].anno = 1920;
-            allfechas[1].mes = 6;
-            allfechas[1].dia = 20;
-            allfechas[1].ACDC = 1;
+            Fecha[] allfechas = TomaDatos.UsoStruct();
 
             Console.WriteLine("buenos días");
 
@@ -24,6 +27,8 @@ namespace ETSFecha
 
             Console.WriteLine("La diferencia en años es de: " + resultado[0] + " y en dias: " + resultado[1]);
             Console.ReadKey();
+
+            Dates.ComprobarInformacion(allfechas);
         }
     }
 }

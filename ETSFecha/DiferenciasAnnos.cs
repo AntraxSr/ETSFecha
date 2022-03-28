@@ -4,18 +4,6 @@ namespace ETSFecha
 {
     public class DiferenciasAnnos
     {
-        /// <summary>
-        /// Estructura en donde guardar los datos de los años, meses, dias y si es antes de cristo.
-        /// Si es antes de cristo(AC) = 0
-        /// Si es después de cristo(DC) = 1
-        /// </summary>
-        public struct datos
-        {
-            public int anno;
-            public int mes;
-            public int dia;
-            public int ACDC;
-        }
 
         /// <summary>
         /// Devuelve el numero de fechas antes de cristo que se envíen a través de la estructura(parámetro)
@@ -24,7 +12,7 @@ namespace ETSFecha
         /// Todos los datos de las fechas pedidas
         /// </param>
         /// <returns></returns>
-        private static int ContadorAñosAC(datos[] allFechas)
+        private static int ContadorAñosAC(Program.Fecha[] allFechas)
         {
             int contador = 0;
             for (int posicion = 0; posicion < allFechas.Length; posicion++)
@@ -43,9 +31,8 @@ namespace ETSFecha
         /// <param name="listaFechas">
         /// El parámetro contiene las dos fechas con las que se va a trabajar.
         /// </param>
-        public static string[] DifferenceYear(datos[] alldata)
+        public static string[] DifferenceYear(Program.Fecha[] alldata)
         {
-
             int numACDC = ContadorAñosAC(alldata);
 
             string[] resultados = new string[2];
@@ -54,8 +41,8 @@ namespace ETSFecha
 
             if (numACDC == 1)
             {
-                DateTime fecha1 = new DateTime(1, alldata[0].mes, alldata[0].dia);
-                DateTime fecha2 = new DateTime(alldata[0].anno + alldata[1].anno + 1, alldata[1].mes, alldata[1].dia);
+                DateTime fecha1 = new DateTime(1, alldata[0].Mes, alldata[0].Dia);
+                DateTime fecha2 = new DateTime(alldata[0].Anno + alldata[1].Anno + 1, alldata[1].Mes, alldata[1].Dia);
 
                 DifAñosDias(ref dias, ref años, fecha2, fecha1);
 
@@ -64,8 +51,8 @@ namespace ETSFecha
             }
             else
             {
-                DateTime fecha1 = new DateTime(alldata[0].anno, alldata[0].mes, alldata[0].dia);
-                DateTime fecha2 = new DateTime(alldata[1].anno, alldata[1].mes, alldata[1].dia);
+                DateTime fecha1 = new DateTime(alldata[0].Anno, alldata[0].Mes, alldata[0].Dia);
+                DateTime fecha2 = new DateTime(alldata[1].Anno, alldata[1].Mes, alldata[1].Dia);
 
                 if (fecha1 > fecha2)
                 {
@@ -101,7 +88,24 @@ namespace ETSFecha
         private static void DifAñosDias(ref int dias, ref int años, DateTime añoMayor, DateTime añoMenor)
         {
             años = añoMayor.Year - añoMenor.Year;
-            dias = añoMayor.Subtract(añoMenor).Days;
+            dias = CalcularDia(añoMayor, añoMenor);
+        }
+        private static int CalcularDia(DateTime fecha, DateTime fecha2)
+        {
+            int dia = 0;
+
+            DateTime fechaProvisional = new DateTime(1, fecha.Month, fecha.Day);
+            DateTime fechaProvisional2 = new DateTime(1, fecha2.Month, fecha2.Day);
+
+            if (fechaProvisional < fechaProvisional2)
+            {
+                dia = (fechaProvisional2 - fechaProvisional).Days;
+            }
+            else
+            {
+                dia = (fechaProvisional - fechaProvisional2).Days;
+            }
+            return dia;
         }
     }
 }
