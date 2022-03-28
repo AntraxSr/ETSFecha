@@ -4,6 +4,10 @@ namespace ETSFecha
 {
     class TomaDatos
     {
+        /// <summary>
+        /// Programa para verificar el formato de la recogida de datos 
+        /// </summary>
+        /// <returns>Devuelve las fechas en un array de estructura</returns>
         public static Program.Fecha[] UsoStruct()
         {
             Program.Fecha[] fechas = new Program.Fecha[2];
@@ -20,6 +24,10 @@ namespace ETSFecha
             return fechas;
         }
 
+        /// <summary>
+        /// Pide y comprueba si es antes de cristo o después de cristo.
+        /// </summary>
+        /// <returns>1 si es antes de cristo o 0 si es después de cristo</returns>
         private static int RecogidaCristo()
         {
             bool seguirPidiendo = true;
@@ -57,6 +65,12 @@ namespace ETSFecha
             }
             return cristo;
         }
+
+        /// <summary>
+        /// Pide un año y comprueba si es válido.
+        /// </summary>
+        /// <param name="bisiesto">Booleano que almacena si es bisiesto o no</param>
+        /// <returns>Retorna el año</returns>
         private static int RecogidaAgno(ref bool bisiesto)
         {
             bool seguirPidiendo = true;
@@ -96,6 +110,11 @@ namespace ETSFecha
             }
             return (numeroAgno);
         }
+
+        /// <summary>
+        /// Pide un mes y comprueba si es válido.
+        /// </summary>
+        /// <returns>Devuelve el valor del mes</returns>
         private static int RecogidaMes()
         {
             bool seguirPidiendo = true;
@@ -132,6 +151,13 @@ namespace ETSFecha
             }
             return numeroMes;
         }
+
+        /// <summary>
+        /// Pide dias y comprueba si es válido.
+        /// </summary>
+        /// <param name="bisiesto">Se le pasa el booleano para, en caso de que el mes sea febrero, aceptar los dias 29</param>
+        /// <param name="mes">Numero de mes</param>
+        /// <returns>Retorna el día comprobado</returns>
         private static int RecogidaDia(bool bisiesto, int mes)
         {
             bool seguirPidiendo = true;

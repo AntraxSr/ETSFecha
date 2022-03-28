@@ -12,12 +12,12 @@ namespace ETSFecha
         /// Todos los datos de las fechas pedidas
         /// </param>
         /// <returns></returns>
-        private static int ContadorAñosAC(Program.Fecha[] allFechas)
+        private static int ContadorAnnos(Program.Fecha[] allFechas)
         {
             int contador = 0;
             for (int posicion = 0; posicion < allFechas.Length; posicion++)
             {
-                if (allFechas[posicion].ACDC == 0)
+                if (allFechas[posicion].ACDC == 1)
                 {
                     contador++;
                 }
@@ -33,10 +33,10 @@ namespace ETSFecha
         /// </param>
         public static string[] DifferenceYear(Program.Fecha[] alldata)
         {
-            int numACDC = ContadorAñosAC(alldata);
+            int numACDC = ContadorAnnos(alldata);
 
             string[] resultados = new string[2];
-            int años = 0;
+            int anno = 0;
             int dias = 0;
 
             if (numACDC == 1)
@@ -44,9 +44,9 @@ namespace ETSFecha
                 DateTime fecha1 = new DateTime(1, alldata[0].Mes, alldata[0].Dia);
                 DateTime fecha2 = new DateTime(alldata[0].Anno + alldata[1].Anno + 1, alldata[1].Mes, alldata[1].Dia);
 
-                DifAñosDias(ref dias, ref años, fecha2, fecha1);
+                DifAñosDias(ref dias, ref anno, fecha2, fecha1);
 
-                resultados[0] = años.ToString();
+                resultados[0] = anno.ToString();
                 resultados[1] = dias.ToString();
             }
             else
@@ -56,13 +56,13 @@ namespace ETSFecha
 
                 if (fecha1 > fecha2)
                 {
-                    DifAñosDias(ref dias, ref años, fecha1, fecha2);
+                    DifAñosDias(ref dias, ref anno, fecha1, fecha2);
                 }
                 else
                 {
                     if (fecha1 < fecha2)
                     {
-                        DifAñosDias(ref dias, ref años, fecha2, fecha1);
+                        DifAñosDias(ref dias, ref anno, fecha2, fecha1);
                     }
                 }
             }

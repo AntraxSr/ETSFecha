@@ -21,8 +21,6 @@ namespace ETSFecha
         {
             Fecha[] allfechas = TomaDatos.UsoStruct();
 
-            Console.WriteLine("buenos días");
-
             string[] resultado = DiferenciasAnnos.DifferenceYear(allfechas);
 
             Console.WriteLine("La diferencia en años es de: " + resultado[0] + " y en dias: " + resultado[1]);
