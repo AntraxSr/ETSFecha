@@ -20,13 +20,12 @@ namespace ETSFecha
         static void Main(string[] args)
         {
             Fecha[] allfechas = TomaDatos.UsoStruct();
-
+            Dates.ComprobarInformacion(allfechas);
             string[] resultado = DiferenciasAnnos.DifferenceYear(allfechas);
 
             Console.WriteLine("La diferencia en años es de: " + resultado[0] + " y en dias: " + resultado[1]);
             Console.ReadKey();
 
-            Dates.ComprobarInformacion(allfechas);
         }
     }
 }
