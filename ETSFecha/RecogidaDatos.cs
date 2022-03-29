@@ -35,7 +35,7 @@ namespace ETSFecha
 
             while (seguirPidiendo)
             {
-
+                Console.Clear();
                 Console.WriteLine("Introduce '1' si el año es antes de cristo y '0' si es después: ");
                 string cadena = Console.ReadLine();
 
@@ -226,7 +226,6 @@ namespace ETSFecha
                 {
                     Console.WriteLine("No has introducido un número.");
                 }
-                Console.ReadKey();
             }
             return numeroDia;
         }

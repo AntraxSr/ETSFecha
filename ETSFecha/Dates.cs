@@ -16,26 +16,26 @@ namespace ETSFecha
                 DateTime fechaHoy = DateTime.Today;
 
 
-                if (fechasComprobar[contador].ACDC == 0)
+                if (fechasComprobar[contador].ACDC == 1)
+                {
+                    int anno = CalcularAnnosAC(fecha);
+                    int dia = CalcularDia(fecha);
 
-                    if (fechasComprobar[contador].ACDC == 0)
-                    {
-                        int anno = CalcularAnnosAC(fecha);
-                        int dia = CalcularDia(fecha);
+                    Console.Clear();
+                    Console.WriteLine("Hay " + anno + " años y " + dia + " días de diferencia en la fecha número {0}", contador + 1);
+                    Console.WriteLine("Pulse una tecla para continuar");
+                    Console.ReadKey();
+                }
+                else
+                {
+                    int anno = CalcularAnnoDC(fecha);
+                    int dia = CalcularDia(fecha);
 
-                        Console.WriteLine("Hay " + anno + " años y " + dia + " días de diferencia en la fecha número {0}", contador + 1);
-                        Console.WriteLine("Pulse una tecla para continuar");
-                        Console.ReadKey();
-                    }
-                    else
-                    {
-                        int anno = CalcularAnnoDC(fecha);
-                        int dia = CalcularDia(fecha);
-
-                        Console.WriteLine("Hay " + anno + " años y " + dia + " días de diferencia en la fecha número {0}", contador + 1);
-                        Console.WriteLine("Pulse una tecla para continuar");
-                        Console.ReadKey();
-                    }
+                    Console.Clear();
+                    Console.WriteLine("Hay " + anno + " años y " + dia + " días de diferencia en la fecha número {0}", contador + 1);
+                    Console.WriteLine("Pulse una tecla para continuar");
+                    Console.ReadKey();
+                }
             }
         }
         /// <summary>

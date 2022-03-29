@@ -45,9 +45,6 @@ namespace ETSFecha
                 DateTime fecha2 = new DateTime(alldata[0].Anno + alldata[1].Anno + 1, alldata[1].Mes, alldata[1].Dia);
 
                 DifAñosDias(ref dias, ref anno, fecha2, fecha1);
-
-                resultados[0] = anno.ToString();
-                resultados[1] = dias.ToString();
             }
             else
             {
@@ -66,6 +63,8 @@ namespace ETSFecha
                     }
                 }
             }
+            resultados[0] = anno.ToString();
+            resultados[1] = dias.ToString();
 
             return resultados;
         }
