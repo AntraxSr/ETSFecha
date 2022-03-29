@@ -77,7 +77,7 @@ namespace TestProject1
 
             DateTime fecha = new DateTime(fechas.Anno, fechas.Mes, fechas.Dia);
 
-            Assert.AreEqual(Dates.CalcularDia(fecha), 55);
+            Assert.AreEqual(Dates.CalcularDia(fecha), 56);
         }
         /// <summary>
         /// Aquí igual solo que le ponemos una fecha AC y ebería devolver el valor de 13 días.
@@ -94,7 +94,53 @@ namespace TestProject1
 
             DateTime fecha = new DateTime(fechas.Anno, fechas.Mes, fechas.Dia);
 
-            Assert.AreEqual(Dates.CalcularDia(fecha), 46);
+            Assert.AreEqual(Dates.CalcularDia(fecha), 47);
+        }
+
+        /// <summary>
+        /// Se comprueba que se devuelva el valor correcto del calculo de años de diferencia
+        /// </summary>
+        [TestMethod]
+        public void TestMethod6()
+        {
+            Program.Fecha[] fechas = new Program.Fecha[2];
+
+            fechas[0].Anno = 1900;
+            fechas[0].Mes = 2;
+            fechas[0].Dia = 10;
+            fechas[0].ACDC = 0;
+
+            fechas[1].Anno = 1900;
+            fechas[1].Mes = 2;
+            fechas[1].Dia = 11;
+            fechas[1].ACDC = 1;
+
+            string[] resultados = { "3800", "1" };
+
+            Assert.AreEqual(DiferenciasAnnos.DifferenceYear(fechas)[0],resultados[0]);
+        }
+
+        /// <summary>
+        /// Se comprueba que se devuelva el valor correcto del calculo de días de diferencia
+        /// </summary>
+        [TestMethod]
+        public void TestMethod7()
+        {
+            Program.Fecha[] fechas = new Program.Fecha[2];
+
+            fechas[0].Anno = 1900;
+            fechas[0].Mes = 2;
+            fechas[0].Dia = 10;
+            fechas[0].ACDC = 0;
+
+            fechas[1].Anno = 1900;
+            fechas[1].Mes = 2;
+            fechas[1].Dia = 11;
+            fechas[1].ACDC = 1;
+
+            string[] resultados = { "3800", "1" };
+
+            Assert.AreEqual(DiferenciasAnnos.DifferenceYear(fechas)[1], resultados[1]);
         }
     }
 }
